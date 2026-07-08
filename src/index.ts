@@ -1,22 +1,32 @@
 import { cuandoPasa, enviarAlFrontend, iniciar } from './lib/ui.ts';
 import { cargarJugadores, obtenerJugadoresPorIds } from './lib/jugadores.ts';
 
+
+
 const ids: number[] = cargarJugadores();
 let roster: number[] = [];
 
 export function estaEnRoster(roster: number[], id: number): boolean {
-  let esta: boolean = false; // COMPLETAR
+  let esta = false; 
+  
+  if(roster[id] != null)
+  {
+    esta = false;
+  }
+  
   return esta;
 }
 
 export function agregarAlRoster(roster: number[], id: number): number[] {
-  let nuevoRoster: number[] = []; // COMPLETAR
+  let nuevoRoster: number[] = roster; 
+
+   nuevoRoster.push(id);
+
   return nuevoRoster;
 }
 
 export function quitarDelRoster(roster: number[], id: number): number[] {
-  let nuevoRoster: number[] = []; // COMPLETAR
-  return nuevoRoster;
+  return roster.filter(num => num !== id);
 }
 
 cuandoPasa('filtrar', () => {
